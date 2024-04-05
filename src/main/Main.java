@@ -26,11 +26,22 @@ public class Main {
 
 	        System.out.println("Digite o valor da Dívida Total:");
 	        double dividaTotal = scanner.nextDouble();
+	        System.out.println("Digite o valor do benchmark para a Razão Ativo Circulante / Passivo Circulante:");
+	        double benchmarkACPC = scanner.nextDouble();
+
+	        System.out.println("Digite o valor do benchmark para a Razão de Liquidez:");
+	        double benchmarkLiquidez = scanner.nextDouble();
+
+	        System.out.println("Digite o valor do benchmark para a Razão de Liquidez Imediata:");
+	        double benchmarkLiquidezImediata = scanner.nextDouble();
+
+	        System.out.println("Digite o valor do benchmark para a Razão de Endividamento:");
+	        double benchmarkEndividamento = scanner.nextDouble();
 
 	        scanner.close();
 
-	        // Definindo os benchmarks para comparação
-	        double[] benchmark = {1.17, 1.0, 0.15, 0.5}; 
+	        // Definindo os benchmarks em um array
+	        double[] benchmark = {benchmarkACPC, benchmarkLiquidez, benchmarkLiquidezImediata, benchmarkEndividamento}; 
 
 	        // Calculando as razões financeiras
 	        RazoesFinanceiras razoes = Business.calcularRazoesFinanceiras(ativosCirculantes, passivosCirculantes, inventario, lucroLiquido, patrimonioLiquido, dividaTotal);
