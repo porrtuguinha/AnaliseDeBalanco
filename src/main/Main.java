@@ -6,50 +6,36 @@ import business.Business;
 import model.RazoesFinanceiras;
 
 public class Main {
-	 public static void main(String[] args) {
-	        Scanner scanner = new Scanner(System.in);
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-	        System.out.println("Digite o valor dos Ativos Circulantes:");
-	        double ativosCirculantes = scanner.nextDouble();
+        double ativosCirculantes = Business.getDoubleInput(scanner, "Digite o valor dos Ativos Circulantes:");
+        double passivosCirculantes = Business.getDoubleInput(scanner, "Digite o valor dos Passivos Circulantes:");
+        double inventario = Business.getDoubleInput(scanner, "Digite o valor do Inventário:");
+        double lucroLiquido = Business.getDoubleInput(scanner, "Digite o valor do Lucro Líquido:");
+        double patrimonioLiquido = Business.getDoubleInput(scanner, "Digite o valor do Patrimônio Líquido:");
+        double dividaTotal = Business.getDoubleInput(scanner, "Digite o valor da Dívida Total:");
 
-	        System.out.println("Digite o valor dos Passivos Circulantes:");
-	        double passivosCirculantes = scanner.nextDouble();
+        // Solicitando os valores dos benchmarks
+        double benchmarkACPC = Business.getDoubleInput(scanner, "Digite o valor do benchmark para a Razão Ativo Circulante / Passivo Circulante:");
+        double benchmarkLiquidez = Business.getDoubleInput(scanner, "Digite o valor do benchmark para a Razão de Liquidez:");
+        double benchmarkLiquidezImediata =Business.getDoubleInput(scanner, "Digite o valor do benchmark para a Razão de Liquidez Imediata:");
+        double benchmarkEndividamento = Business.getDoubleInput(scanner, "Digite o valor do benchmark para a Razão de Endividamento:");
 
-	        System.out.println("Digite o valor do Inventário:");
-	        double inventario = scanner.nextDouble();
+        scanner.close();
 
-	        System.out.println("Digite o valor do Lucro Líquido:");
-	        double lucroLiquido = scanner.nextDouble();
+        // Definindo os benchmarks em um array
+        double[] benchmark = {benchmarkACPC, benchmarkLiquidez, benchmarkLiquidezImediata, benchmarkEndividamento}; 
 
-	        System.out.println("Digite o valor do Patrimônio Líquido:");
-	        double patrimonioLiquido = scanner.nextDouble();
+        // Calculando as razões financeiras
+        RazoesFinanceiras razoes = Business.calcularRazoesFinanceiras(ativosCirculantes, passivosCirculantes, inventario, lucroLiquido, patrimonioLiquido, dividaTotal);
 
-	        System.out.println("Digite o valor da Dívida Total:");
-	        double dividaTotal = scanner.nextDouble();
-	        System.out.println("Digite o valor do benchmark para a Razão Ativo Circulante / Passivo Circulante:");
-	        double benchmarkACPC = scanner.nextDouble();
+        // Realizando a análise de balanço
+        Business.analisarBalanco(razoes, benchmark);
+    }
 
-	        System.out.println("Digite o valor do benchmark para a Razão de Liquidez:");
-	        double benchmarkLiquidez = scanner.nextDouble();
-
-	        System.out.println("Digite o valor do benchmark para a Razão de Liquidez Imediata:");
-	        double benchmarkLiquidezImediata = scanner.nextDouble();
-
-	        System.out.println("Digite o valor do benchmark para a Razão de Endividamento:");
-	        double benchmarkEndividamento = scanner.nextDouble();
-
-	        scanner.close();
-
-	        // Definindo os benchmarks em um array
-	        double[] benchmark = {benchmarkACPC, benchmarkLiquidez, benchmarkLiquidezImediata, benchmarkEndividamento}; 
-
-	        // Calculando as razões financeiras
-	        RazoesFinanceiras razoes = Business.calcularRazoesFinanceiras(ativosCirculantes, passivosCirculantes, inventario, lucroLiquido, patrimonioLiquido, dividaTotal);
-
-	        // Realizando a análise de balanço
-	        Business.analisarBalanco(razoes, benchmark);
-	    }
-	}
+   
+}
 
 
 

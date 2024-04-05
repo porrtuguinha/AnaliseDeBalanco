@@ -1,5 +1,7 @@
 package business;
 
+import java.util.Scanner;
+
 import model.RazoesFinanceiras;
 
 public class Business {
@@ -66,6 +68,14 @@ public class Business {
 	        } else {
 	            System.out.println(" - A empresa está altamente alavancada, o que pode representar riscos.");
 	        }
+	    }
+	 public static double getDoubleInput(Scanner scanner, String message) {
+	        System.out.println(message);
+	        while (!scanner.hasNextDouble()) {
+	            System.out.println("Por favor, insira um valor numérico válido.");
+	            scanner.next(); // Limpa o buffer do scanner
+	        }
+	        return scanner.nextDouble();
 	    }
 
 
