@@ -30,7 +30,7 @@ public class Main {
 	        scanner.close();
 
 	        // Definindo os benchmarks para comparação
-	        double[] benchmark = {1.15, 1.0, 0.15, 0.5}; 
+	        double[] benchmark = {1.17, 1.0, 0.15, 0.5}; 
 
 	        // Calculando as razões financeiras
 	        RazoesFinanceiras razoes = Business.calcularRazoesFinanceiras(ativosCirculantes, passivosCirculantes, inventario, lucroLiquido, patrimonioLiquido, dividaTotal);
